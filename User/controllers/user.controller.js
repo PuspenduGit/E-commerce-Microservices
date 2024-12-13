@@ -5,14 +5,14 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { name, email, password } = req.body;
     const user = await userModel.findOne({ email }).exec();
     if (user) {
       return res.status(400).send("User already exists");
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new userModel({
-      username,
+      name,
       email,
       password: hashedPassword,
     });
@@ -21,7 +21,8 @@ const register = async (req, res) => {
       expiresIn: "1h",
     });
     res.cookie("token", token);
-    res.status(201).send({ message: "User created successfully" });
+    delete newUser._doc.password;
+    res.send({ token, newUser });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: err.message });
@@ -31,7 +32,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await userModel.findOne({ email }).exec();
+    const user = await userModel.findOne({ email }).select("+password").exec();
     if (!user) {
       return res.status(400).send("User not found");
     }
@@ -42,10 +43,10 @@ const login = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
+    delete user._doc.password;
     res.cookie("token", token);
-    res.send({ message: "Logged in successfully" });
+    res.send({ token, user });
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: err.message });
   }
 };

@@ -25,6 +25,7 @@ const userAuth = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
+    delete user._doc.password;
     req.user = user;
     next();
   } catch (err) {
