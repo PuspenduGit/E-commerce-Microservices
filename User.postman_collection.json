@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "fd3cc93d-8c7b-48c9-b244-07d4d5c8e057",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26343539"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"test2\",\r\n    \"email\":\"test_mail4\",\r\n    \"password\":\"test_password3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{BASE_URL}}/user/register",
+					"protocol": "http",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"test_mail4\",\r\n    \"password\":\"test_password3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{BASE_URL}}/user/login",
+					"protocol": "http",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.39.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWMyY2MwYmU4YmI1NjdkYjgzZTcyNCIsImlhdCI6MTczNDE2MjgzNSwiZXhwIjoxNzM0MTY2NDM1fQ.g6yTah0pPbcPPw0BC_J4qwIJVRHpf76qpU7c0F8mM4Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{BASE_URL}}/user/profile",
+					"protocol": "http",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWMyN2Q1ZTQ3NDBhNmU5Y2RjNTAxMiIsImlhdCI6MTczNDA5MzE5NiwiZXhwIjoxNzM0MDk2Nzk2fQ.WOJ79zdzWvGLijlNmc5Mwp-zTBNfYzhmx4ZJroY-SIY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{BASE_URL}}/user/logout",
+					"protocol": "http",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
