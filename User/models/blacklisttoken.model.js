@@ -14,6 +14,7 @@ const blacklistTokenSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    collection: "blacklisttoken",
   }
 );
 
