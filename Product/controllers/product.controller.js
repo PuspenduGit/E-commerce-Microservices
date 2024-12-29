@@ -135,6 +135,7 @@ const buyProduct = async (req, res) => {
               data: {
                 orderId: data.data.orderId,
                 products: data.data.products,
+                totalPrice: data.data.totalPrice,
               },
             });
             break;

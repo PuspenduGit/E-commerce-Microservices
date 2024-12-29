@@ -8,6 +8,10 @@ const setupOrderService = () => {
       //   console.log("Received message", data);
       //   const { event, userEmail } = data;
       const products = data.data;
+      const totalPrice = products.reduce(
+        (acc, product) => acc + product.price,
+        0
+      );
       //   console.log("event", event);
       //   console.log("products", products);
       //   console.log("userEmail", userEmail);
@@ -16,7 +20,7 @@ const setupOrderService = () => {
       const newOrder = new Order({
         orderId: newOrderId,
         products,
-        totalPrice: products.reduce((acc, product) => acc + product.price, 0),
+        totalPrice: totalPrice,
       });
 
       await newOrder.save();
@@ -26,6 +30,7 @@ const setupOrderService = () => {
         data: {
           orderId: newOrderId,
           products,
+          totalPrice: totalPrice,
         },
       });
     });
